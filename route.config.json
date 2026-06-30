@@ -1,0 +1,42 @@
+[
+    {
+        "path": "/ticket",
+        "method": "GET",
+        "controller": "ticket",
+        "action":"getAll",
+        "auth": true
+    },
+    {
+        "path": "/ticket/([0-9]+)",
+        "method": "GET",
+        "controller": "ticket",
+        "action":"getById",
+        "auth": true
+    },
+    {
+        "path": "/ticket",
+        "method": "POST",
+        "controller": "ticket",
+        "action":"create",
+        "auth": true
+    },
+    {
+        "path": "/ticket/([0-9]+)/status",
+        "method": "POST",
+        "controller": "ticket",
+        "action":"update",
+        "auth": true
+    },
+    {
+        "path": "/login",
+        "method": "POST",
+        "controller": "auth",
+        "action":"login"
+    },
+    {
+        "path": "/register",
+        "method": "POST",
+        "controller": "auth",
+        "action":"register"
+    }
+]
