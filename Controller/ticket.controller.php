@@ -17,7 +17,7 @@ class TicketController {
 
     public function getById($id){
         try {
-            $tickets = ticket::getById($id); // Attention au pluriel $tickets si c'est un seul ticket !
+            $tickets = ticket::getById($id); 
             http_response_code(200);
             include_once('./View/ticketlist.view.php');
         } catch (Exception $e) {
@@ -43,10 +43,10 @@ class TicketController {
                 throw new Exception("Erreur d'authentification : ID utilisateur manquant", 401);
             }
 
-            // Envoi de l'objet enrichi au modèle
+            
             ticket::create($ticket);
 
-            http_response_code(21); // 201 Created
+            http_response_code(21); 
             echo json_encode(["status" => "success", "message" => "Ticket créé avec succès"]);
 
         } catch (Exception $e) {

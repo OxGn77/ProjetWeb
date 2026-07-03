@@ -61,10 +61,8 @@
         try {
             include_once('./JWT/JWT.php');
             
-            // Décodage avec la clé secrète du projet
             $decodedToken = JWT::decode($token, "dioebzfhfeipjapeoaj§opeao§èzjbiebpz(p1^^3éù28219631", ["HS256"]);
-            
-            // Injection des infos du token décodé pour les contrôleurs
+           
             $_SERVER['USER_DATA'] = $decodedToken;
 
         } catch (Exception $e) {
@@ -74,7 +72,6 @@
             exit;
         }
     }
-    // ==========================================
 
     preg_match('#^' . $currentRoute->path . '$#', $resource, $match);
 

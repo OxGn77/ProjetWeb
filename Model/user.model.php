@@ -9,7 +9,6 @@ class UserModel{
         $count = $req->fetchColumn();
 
         if($count > 0){
-            // Code 409 : Conflict (L'utilisateur existe déjà)
             throw new Exception("L'utilisateur existe déjà", 409);
         }
 
@@ -25,17 +24,14 @@ class UserModel{
         $req->execute(array($email));
         $user = $req->fetch(PDO::FETCH_OBJ);
 
-        // Code 401 : Unauthorized (Email introuvable)
         if (!$user){
             throw new Exception("Email ou mot de passe incorrect", 401);
         }
-
-        // On remet la comparaison en MD5 d'origine
+ 
         if (md5($password) != $user->password){
             throw new Exception("Email ou mot de passe incorrect", 401);
         }
 
-        // Sécurité pour le JWT : on retire le mot de passe de l'objet avant de le renvoyer
         unset($user->password);
 
         return $user;
