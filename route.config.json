@@ -24,7 +24,7 @@
         "path": "/ticket/([0-9]+)/status",
         "method": "POST",
         "controller": "ticket",
-        "action":"update",
+        "action":"updateStatus",
         "auth": true
     },
     {
